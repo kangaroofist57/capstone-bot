@@ -1,7 +1,7 @@
 module.exports = {
     name: 'message',
     description: 'the event of a message',
-    execute: async function(message, bot, Discord, config, cmds, variables, embed) {
+    execute: async function(message, bot, Discord, config, cmds, variables, embed, mongoose, capstone) {
 
         const fs = require('fs');
         const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -20,7 +20,7 @@ module.exports = {
 
         if(message.content.startsWith(config.PREFIX) & cmds.includes(args[0])) {
     
-            await bot.commands.get(args[0]).execute(message, args, variables, config, embed);
+            await bot.commands.get(args[0]).execute(message, args, variables, config, embed, mongoose, capstone);
     
         }
     }

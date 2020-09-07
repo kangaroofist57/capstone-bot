@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kangaroofist57/bot-template#readme",
   "dependencies": {
-    "discord.js": "^12.2.0"
+    "discord.js": "^12.2.0",
+    "mongoose": "^5.10.3"
   }
 }
