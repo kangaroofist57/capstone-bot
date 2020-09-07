@@ -1,0 +1,22 @@
+{
+  "name": "bot-template",
+  "version": "1.0.0",
+  "description": "basic template to create a discord bot with commands",
+  "main": "index.js",
+  "scripts": {
+    "test": "!test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kangaroofist57/bot-template.git"
+  },
+  "author": "daniel solano <solanodaniel57@yahoo.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kangaroofist57/bot-template/issues"
+  },
+  "homepage": "https://github.com/kangaroofist57/bot-template#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
