@@ -1,4 +1,5 @@
 {
     "PREFIX": "!",
-    "inviteLink": "https://discord.com/oauth2/authorize?client_id=752332253257924689&scope=bot&permissions=523336"
+    "inviteLink": "https://discord.com/oauth2/authorize?client_id=752332253257924689&scope=bot&permissions=523336",
+    "embedColor": "#0x7542E3"
 }

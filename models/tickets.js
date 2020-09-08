@@ -8,10 +8,11 @@ const tickets = mongoose.Schema({
     guildID: String,
     channelName: String,
     channelID: String,
-    categoryName: String,
+    createdChannelID: String,
     categoryID: String,
     message: String,
     messageID: String,
+    guildDB: String,
     time: String
 });
 
