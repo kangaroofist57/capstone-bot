@@ -3,13 +3,12 @@ module.exports = {
     description: 'says !test used to test the bot',
     execute: async function(message, args, variables, config, embed, mongoose, capstone) {
 
-        const Ticket = require('../models/tickets');
 
         let ticketCon = {};
         let ticketData = {};
         
-        await capstone.findOne({ "guild.guildID": message.guild.id }).then(data => ticketCon = data);
-        await Ticket.findOne({ guildID: message.guild.id, createdChannelID: message.channel.id }).then(data => {
+        await capstone.guild.findOne({ "guild.guildID": message.guild.id }).then(data => ticketCon = data);
+        await capstone.tickets.findOne({ guildID: message.guild.id, createdChannelID: message.channel.id }).then(data => {
             ticketData = data;
         }).catch(err => {
             console.log(err);
@@ -29,7 +28,7 @@ module.exports = {
                 await userFetch.send('Your ticket has been closed. If you have any other problems feel free to use the ticket command again in the future.');
             }
 
-            await Ticket.findOneAndDelete({ guildID: message.guild.id, createdChannelID: message.channel.id }).then(data => {
+            await capstone.tickets.findOneAndDelete({ guildID: message.guild.id, createdChannelID: message.channel.id }).then(data => {
                 console.log('data delete', data);
             })
 
@@ -56,7 +55,7 @@ module.exports = {
         }).then(createdChannel => {
             createdChannel.setParent(ticketCon.ticket.createdCategoryID);
 
-            const newTicket = new Ticket({
+            const newTicket = new capstone.tickets({
                 _id: mongoose.Types.ObjectId(),
                 username: message.author.username,
                 userID: message.author.id,

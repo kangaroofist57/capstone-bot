@@ -7,9 +7,9 @@ module.exports = {
 
             let dataBase = {};
 
-            await capstone.findOne({ 'guild.guildID': message.guild.id}).then(data => dataBase = data);
+            await capstone.guild.findOne({ 'guild.guildID': message.guild.id}).then(data => dataBase = data);
 
-            // console.log(dataBase)
+            // return console.log(capstone.guild)
 
             if(dataBase !== null) {
                 if(dataBase.ticket) return message.channel.send('Your ticket system is already set up.');
@@ -35,7 +35,7 @@ module.exports = {
                         }
                     ])
 
-                    const tickets = new capstone({
+                    const tickets = new capstone.guild({
                         _id: mongoose.Types.ObjectId(),
                         guild: {
                             guildName: message.guild.name,

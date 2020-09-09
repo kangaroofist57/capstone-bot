@@ -8,7 +8,20 @@ const cmds = fs.readdirSync('./commands').filter(f => f.endsWith('.js')).map(cmd
 const eventFolder = fs.readdirSync('./events');
 const varFolder = fs.readdirSync('./variables').filter(f => f.endsWith('.js'));
 const mongoose = require('mongoose');
-const capstone = require('./models/capstone');
+// const capstone = require('./models/capstone');
+
+function capstone() {
+
+    let models = fs.readdirSync('./models');
+    let modelsObj = {};
+
+    models.forEach(model => {
+        modelsObj[model.replace('.js', '')] = require(`./models/${model}`);
+    });
+
+    return modelsObj;
+
+}
 
 mongoose.connect('mongodb://localhost/capstone', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -31,7 +44,7 @@ for(let file of eventFolder) {
     const eventFile = require(`./events/${file}`);
     const eventType = file.replace('.js', '');
 
-    bot.on(eventType, event => eventFile.execute(event, bot, Discord, config, cmds, variables(), embed, mongoose, capstone));
+    bot.on(eventType, event => eventFile.execute(event, bot, Discord, config, cmds, variables(), embed, mongoose, capstone()));
 
 }
 
